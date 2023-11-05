@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bia2xf756yt2y"]
+
+[ext_resource type="Script" path="res://scripts/Level.gd" id="1_53fyy"]
+[ext_resource type="PackedScene" uid="uid://j7xj3n34cies" path="res://scenes/Player.tscn" id="2_bst7m"]
+[ext_resource type="PackedScene" uid="uid://djkjw8ufqhkh2" path="res://scenes/enemies/BlackWerewolf.tscn" id="3_b0fxc"]
+[ext_resource type="PackedScene" uid="uid://dgewslkoufliq" path="res://scenes/enemies/Tengu.tscn" id="4_6lk25"]
+[ext_resource type="PackedScene" uid="uid://bnrkg7fy1nlux" path="res://scenes/enemies/Gotoku.tscn" id="5_tvvh5"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_53fyy")
+
+[node name="Player" parent="." instance=ExtResource("2_bst7m")]
+
+[node name="bw" parent="." instance=ExtResource("3_b0fxc")]
+position = Vector2(-280, 55)
+
+[node name="bw2" parent="." instance=ExtResource("3_b0fxc")]
+position = Vector2(-416, 247)
+
+[node name="bw3" parent="." instance=ExtResource("3_b0fxc")]
+position = Vector2(-340, -132)
+
+[node name="Tengu" parent="." instance=ExtResource("4_6lk25")]
+position = Vector2(411, -202)
+
+[node name="Tengu2" parent="." instance=ExtResource("4_6lk25")]
+position = Vector2(436, 290)
+
+[node name="Tengu3" parent="." instance=ExtResource("4_6lk25")]
+position = Vector2(175, -255)
+
+[node name="bw4" parent="." instance=ExtResource("5_tvvh5")]
+position = Vector2(-1, -244)
+
+[node name="bw5" parent="." instance=ExtResource("5_tvvh5")]
+position = Vector2(-209, -239)
+
+[node name="bw6" parent="." instance=ExtResource("5_tvvh5")]
+position = Vector2(158, 256)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://2v21tqehac0c"]
+
+[ext_resource type="Script" path="res://scripts/drops/Drop.gd" id="1_i5mfi"]
+[ext_resource type="Texture2D" uid="uid://c1ro3khmvjdlb" path="res://assets/exp/gem06green.png" id="2_3pxad"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qad83"]
+radius = 14.0357
+
+[node name="SmallExp" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_i5mfi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3pxad")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qad83")

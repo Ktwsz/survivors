@@ -1,0 +1,153 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgewslkoufliq"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_fnlvl"]
+[ext_resource type="Texture2D" uid="uid://dj2w12pphxxq5" path="res://assets/Yamabushi_tengu/Yamabushi_tengu_Spritelist.png" id="2_ba7is"]
+[ext_resource type="PackedScene" uid="uid://6pfrvu1kjl3x" path="res://scenes/UI/DamageText.tscn" id="2_v1hfy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hw5ed"]
+radius = 20.0
+height = 90.0
+
+[sub_resource type="Animation" id="Animation_ctmel"]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:isDying")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:isHitOnCooldown")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_62ohk"]
+resource_name = "die"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [198, 199, 200, 201, 202, 203]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:isDying")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ieh11"]
+resource_name = "hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [176, 177, 178]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:isHitOnCooldown")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_vhc01"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [22, 23, 24, 25, 26, 27, 28, 29]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g2w3p"]
+_data = {
+"RESET": SubResource("Animation_ctmel"),
+"die": SubResource("Animation_62ohk"),
+"hit": SubResource("Animation_ieh11"),
+"walk": SubResource("Animation_vhc01")
+}
+
+[node name="Tengu" type="CharacterBody2D"]
+collision_layer = 2
+safe_margin = 1.0
+script = ExtResource("1_fnlvl")
+speed = 10
+dropSrc = "res://scenes/drops/MediumExp.tscn"
+dropVal = 20
+damageTextScene = ExtResource("2_v1hfy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, -30)
+texture = ExtResource("2_ba7is")
+hframes = 22
+vframes = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -13)
+shape = SubResource("CapsuleShape2D_hw5ed")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_g2w3p")
+}

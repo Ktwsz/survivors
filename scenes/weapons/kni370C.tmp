@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://br5uyaxsg3q3y"]
+
+[ext_resource type="Script" path="res://scripts/weapons/Spawner.gd" id="1_kujei"]
+[ext_resource type="Script" path="res://scripts/weapons/KnifeProjectile.gd" id="2_8382q"]
+[ext_resource type="Texture2D" uid="uid://di8dcpxqgw320" path="res://assets/knife/knife.png" id="2_ic1se"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ref86"]
+size = Vector2(14.1421, 26.1617)
+
+[node name="KnifeSpawner" type="Node2D"]
+script = ExtResource("1_kujei")
+
+[node name="Projectile" type="CharacterBody2D" parent="."]
+visible = false
+collision_mask = 2
+script = ExtResource("2_8382q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Projectile"]
+texture = ExtResource("2_ic1se")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile"]
+position = Vector2(0.249999, -0.249127)
+rotation = 0.787143
+shape = SubResource("RectangleShape2D_ref86")

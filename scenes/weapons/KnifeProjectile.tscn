@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://pkl2tbr7napo"]
+
+[ext_resource type="Script" path="res://scripts/weapons/KnifeProjectile.gd" id="1_tmnot"]
+[ext_resource type="Texture2D" uid="uid://di8dcpxqgw320" path="res://assets/knife/knife.png" id="2_nqi75"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ref86"]
+size = Vector2(14.1421, 26.1617)
+
+[node name="Projectile" type="CharacterBody2D"]
+rotation = 0.785398
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_tmnot")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nqi75")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.249999, -0.249127)
+rotation = 0.787143
+shape = SubResource("RectangleShape2D_ref86")
